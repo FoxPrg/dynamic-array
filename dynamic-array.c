@@ -92,7 +92,7 @@ bool_t dynamic_free(
 			sizeof(dynamic_array_t) * (__dynamic_arrays_allocated_count - DYNAMIC_ARRAY_EXPAND_LENGTH));
 		if (tmp) {
 			__dynamic_arrays_descriptors = tmp;
-			__dynamic_arrays_allocated_count -= 1;
+			__dynamic_arrays_allocated_count -= DYNAMIC_ARRAY_EXPAND_LENGTH;
 		}
 	}
 
