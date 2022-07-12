@@ -34,7 +34,7 @@ struct _dynamic_array_descriptor_t {
 dynamic_array_t _dynamic_create(
 	unsigned int element_size
 );
-#define dynamic_create(...)	_dynamic_create(sizeof(__VA_ARGS__))
+#define dynamic_create(...)	(__VA_ARGS__*)_dynamic_create(sizeof(__VA_ARGS__))
 
 bool_t _dynamic_push(
 	dynamic_array_t* dynamic_array_pointer,
