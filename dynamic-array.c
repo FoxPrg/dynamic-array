@@ -87,7 +87,7 @@ bool_t dynamic_free(
 	for (; index < __dynamic_arrays_current_count - 1; index++) __dynamic_arrays_descriptors[index] = __dynamic_arrays_descriptors[index + 1];
 	__dynamic_arrays_current_count -= 1;
 
-	if (!(__dynamic_arrays_current_count % DYNAMIC_ARRAY_EXPAND_LENGTH)) {
+	if (__dynamic_arrays_current_count && !(__dynamic_arrays_current_count % DYNAMIC_ARRAY_EXPAND_LENGTH)) {
 		void* tmp = realloc(__dynamic_arrays_descriptors,
 			sizeof(dynamic_array_t) * (__dynamic_arrays_allocated_count - DYNAMIC_ARRAY_EXPAND_LENGTH));
 		if (tmp) {
