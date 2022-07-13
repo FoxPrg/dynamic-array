@@ -53,7 +53,7 @@ bool_t _dynamic_push(
 
 	unsigned char* next_elem_data = (unsigned char*)((unsigned int)__dynamic_arrays_descriptors[index].dynamic_array +
 		__dynamic_arrays_descriptors[index].element_size * __dynamic_arrays_descriptors[index].current_length),
-	* data = (unsigned char*)((unsigned int)&*dynamic_array_pointer + sizeof(dynamic_array_t));
+	* data = (unsigned char*)((unsigned int)&dynamic_array_pointer + sizeof(dynamic_array_t*));
 
 	for (unsigned int j = 0; j < __dynamic_arrays_descriptors[index].element_size; j++) next_elem_data[j] = data[j];
 	__dynamic_arrays_descriptors[index].current_length += 1;
