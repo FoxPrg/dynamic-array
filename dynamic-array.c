@@ -12,7 +12,7 @@ dynamic_array_t _dynamic_create(
 			calloc(DYNAMIC_ARRAY_EXPAND_LENGTH, sizeof(struct _dynamic_array_descriptor_t));
 		if (!__dynamic_arrays_descriptors) return false;
 	}
-	else if (__dynamic_arrays_current_count == __dynamic_arrays_allocated_count) {
+	if (__dynamic_arrays_current_count == __dynamic_arrays_allocated_count) {
 		struct _dynamic_array_descriptor_t* tmp = (struct _dynamic_array_descriptor_t*)realloc(__dynamic_arrays_descriptors,
 			(__dynamic_arrays_allocated_count + DYNAMIC_ARRAY_EXPAND_LENGTH) * sizeof(struct _dynamic_array_descriptor_t));
 		if (!tmp) return false;
