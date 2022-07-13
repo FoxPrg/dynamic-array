@@ -38,12 +38,10 @@ bool_t _dynamic_push(
 	for (; index < __dynamic_arrays_current_count; index++) if (__dynamic_arrays_descriptors[index].dynamic_array == *dynamic_array_pointer) break;
 	if (index == __dynamic_arrays_current_count) return false;
 
-	if (__dynamic_arrays_descriptors[index].current_length >= __dynamic_arrays_descriptors[index].allocated_length) {
-		dynamic_array_t tmp = realloc(
-			__dynamic_arrays_descriptors[index].dynamic_array,
+	if (__dynamic_arrays_descriptors[index].current_length == __dynamic_arrays_descriptors[index].allocated_length) {
+		dynamic_array_t tmp = realloc(*dynamic_array_pointer,
 			(__dynamic_arrays_descriptors[index].allocated_length + DYNAMIC_ARRAY_EXPAND_LENGTH) * __dynamic_arrays_descriptors[index].element_size
 		);
-
 		if (!tmp) return false;
 
 		__dynamic_arrays_descriptors[index].dynamic_array = tmp;
